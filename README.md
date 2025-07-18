@@ -46,3 +46,25 @@ Both JaCoCo and IntelliJ IDEA coverage reports provide:
 2. Use parameterized tests for methods with multiple execution paths
 3. Test exception handling
 4. Ensure all branches in conditional statements are tested
+
+## Qodana Integration with Coverage
+
+This project is configured to use [Qodana](https://www.jetbrains.com/qodana/) for code quality analysis with coverage reporting on pull requests.
+
+### How it works
+
+1. A GitHub Actions workflow runs on every pull request to the main/master branch
+2. The workflow runs the tests with JaCoCo coverage
+3. Qodana analyzes the code and incorporates the coverage data
+4. Results are posted as a comment on the pull request
+
+### Configuration
+
+- `.github/workflows/qodana.yml`: GitHub Actions workflow configuration
+- `qodana.yaml`: Qodana configuration file
+
+### Requirements
+
+To use the Qodana integration:
+1. Set up a `QODANA_TOKEN` secret in your GitHub repository settings
+2. Ensure pull requests are made against the main or master branch
